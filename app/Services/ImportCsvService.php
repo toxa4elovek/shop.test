@@ -17,7 +17,7 @@ class ImportCsvService
      * @param string $filePath
      * @return int
      */
-    public function import(string $filePath)
+    public function import(string $filePath): int
     {
         if(!file_exists($filePath)) {
             throw new \DomainException('File does not exist');
