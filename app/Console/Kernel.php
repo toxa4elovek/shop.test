@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\Commands\ImportCsvCommand;
+use App\Console\Commands\ImportCsvCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

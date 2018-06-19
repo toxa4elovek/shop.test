@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Commands;
+namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use League\Csv\Reader;
