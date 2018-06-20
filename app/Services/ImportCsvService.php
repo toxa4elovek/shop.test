@@ -27,7 +27,6 @@ class ImportCsvService
         $count = 0;
 
         foreach ($data as $row) {
-            dd($row);
             if (!$this->validation($row)) {
                 continue;
             }
