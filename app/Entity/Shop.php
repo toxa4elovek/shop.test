@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class Shop
@@ -69,5 +70,21 @@ class Shop extends Model
     public function getUserId(): int
     {
         return $this->userId;
+    }
+
+    /**
+     * Метод производит валидацию данных
+     * @param $data
+     * @return bool
+     */
+    public function validation($data): bool
+    {
+        return !Validator::make($data, [
+            'REGION_ID' => 'required|integer',
+            'TITLE'     => 'required|string|max:255',
+            'CITY'      => 'required|string|max:255' ,
+            'ADDR'      => 'required|string|max:255',
+            'USER_ID'   => 'required|integer',
+        ])->fails();
     }
 }

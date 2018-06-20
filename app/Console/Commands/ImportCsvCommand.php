@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use League\Csv\Reader;
 use App\Services\ImportCsvService;
 
 class ImportCsvCommand extends Command
@@ -13,7 +12,7 @@ class ImportCsvCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'import:csv {path}';
+    protected $signature = 'import:csv {csvFilePath}';
 
     /**
      * The console command description.
@@ -35,14 +34,15 @@ class ImportCsvCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return bool
      */
     public function handle()
     {
-        $path = $this->argument('path');
+        $csvFilePath = $this->argument('csvFilePath');
 
         try {
-            $count = $this->service->import($path);
+            $data  = $this->service->import($csvFilePath);
+            $count = $this->service->save($data);
 
             $this->info("$count records saved");
 
