@@ -48,13 +48,12 @@ class ImportCsvService
         foreach ($data as $row) {
 
             /**@var Shop $shop*/
-            $shop = Shop::make([
-                'regionId' => $row['REGION_ID'],
-                'title' => $row['TITLE'],
-                'city' => $row['CITY'],
-                'address' => $row['ADDR'],
-                'userId' => $row['USER_ID']
-            ]);
+            $shop = new Shop();
+            $shop->setRegionId($row['REGION_ID']);
+            $shop->setTitle($row['TITLE']);
+            $shop->setCity($row['CITY']);
+            $shop->setAddress($row['ADDR']);
+            $shop->setUserId($row['USER_ID']);
 
             if (!$shop->validation($row)) {
                 continue;
