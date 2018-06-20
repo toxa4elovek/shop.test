@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class ImportCsvService
 {
     const UTF_FILE_ENCODING = 'utf-8';
-    const CP_FILE_EnCODING = 'cp-1251';
+    const CP_FILE_ENCODING = 'cp-1251';
 
     /**
      * Метод импортирует данные из csv файла в БД
@@ -95,7 +95,7 @@ class ImportCsvService
                 $encoding = mb_detect_encoding($buffer, null, true);
 
                 if ($encoding === false) {
-                    $buffer = mb_convert_encoding($buffer, self::UTF_FILE_ENCODING, self::CP_FILE_EnCODING);
+                    $buffer = mb_convert_encoding($buffer, self::UTF_FILE_ENCODING, self::CP_FILE_ENCODING);
                 }
 
                 $result[] = str_getcsv($buffer);
